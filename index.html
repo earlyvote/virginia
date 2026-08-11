@@ -50,12 +50,19 @@
   .addr-link:hover {
     color: var(--dark-purple);
   }
+
   .wrap{ max-width:760px; margin:0 auto; padding:0 24px 80px; }
 
   header{
     padding: 56px 24px 4px;
     text-align:center;
     position:relative;
+  }
+  .site-logo{
+    display:block;
+    width:min(220px, 60vw);
+    height:auto;
+    margin:0 auto 16px;
   }
   .eyebrow{
     font-family:'IBM Plex Mono', monospace;
@@ -235,6 +242,7 @@
 <body>
 
 <header>
+  <img class="site-logo" src="logo.svg" alt="Organization logo" />
   <h1>Where do I vote early in Virginia?</h1>
 </header>
 <!-- <div class="stub"></div> -->
