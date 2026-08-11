@@ -40,6 +40,16 @@
     color: var(--ink);
   }
 
+  .addr-link {
+    color: var(--ink-soft);
+    text-decoration: underline;
+    text-decoration-color: var(--light-purple);
+    font-weight: 500;
+  }
+
+  .addr-link:hover {
+    color: var(--dark-purple);
+  }
   .wrap{ max-width:760px; margin:0 auto; padding:0 24px 80px; }
 
   header{
@@ -436,6 +446,7 @@ function renderResults(countyName){
 function cardHtml(r){
   const name = r.location_name || r.location || r.site_name || 'Voting Location';
   const address = [r.address, r.city, r.zip].filter(Boolean).join(', ');
+  const mapsUrl = address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}` : '#';
   const hours = r.hours || r.polling_hours;
   const monday_thru_friday = r.monday_thru_friday;
   const saturday_and_sunday = r.saturday_and_sunday;
@@ -450,7 +461,12 @@ function cardHtml(r){
   return `
     <div class="card">
       <h3>${escapeHtml(name)}</h3>
-      ${address ? `<div class="addr">${escapeHtml(address)}</div>` : ''}
+      ${address ? `
+        <div class="addr">
+          <a href="${mapsUrl}" target="_blank" rel="noopener noreferrer" class="addr-link">
+            📍 ${escapeHtml(address)}
+          </a>
+        </div>` : ''}
       <div class="meta-row">
         ${county ? `<span><b>County:</b> ${escapeHtml(county)}</span>` : ''}
         ${hours ? `<span><b>Hours:</b> ${escapeHtml(hours)}</span>` : ''}
