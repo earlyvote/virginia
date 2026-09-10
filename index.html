@@ -457,7 +457,8 @@ function cardHtml(r){
   const mapsUrl = address ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}` : '#';
   const hours = r.hours || r.polling_hours;
   const monday_thru_friday = r.monday_thru_friday;
-  const saturday_and_sunday = r.saturday_and_sunday;
+  const saturday = r.saturday;
+  const sunday = r.sunday;
   const phone = r.phone;
   const county = r.county;
   const statusRaw = (r.status || '').toLowerCase();
@@ -479,7 +480,8 @@ function cardHtml(r){
         ${county ? `<span><b>County:</b> ${escapeHtml(county)}</span>` : ''}
         ${hours ? `<span><b>Hours:</b> ${escapeHtml(hours)}</span>` : ''}
         ${monday_thru_friday ? `<span><b>Monday Thru Friday:</b> ${escapeHtml(monday_thru_friday)}</span>` : ''}
-        ${saturday_and_sunday ? `<span><b>Saturday and Sunday:</b> ${escapeHtml(saturday_and_sunday)}</span>` : ''}
+        ${saturday ? `<span><b>Saturday:</b> ${escapeHtml(saturday)}</span>` : ''}
+        ${sunday ? `<span><b>Sunday:</b> ${escapeHtml(sunday)}</span>` : ''}
         ${phone ? `<span><b>Registrar Phone Number:</b> <a href="tel:${phone.replace(/[^0-9+]/g, '')}" class="phone-link">${escapeHtml(phone)}</a></span>` : ''}
         ${badge}
       </div>
